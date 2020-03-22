@@ -45,6 +45,8 @@ for x in filenames:
     percents.append(compare_2vector(vectors['s01n001.gfd'], vectors[x]))
 
 plt.plot([_ for _ in range(len(percents))], percents, 'bx')
+plt.xlabel('Images')
+plt.ylabel('Percents')
 plt.show()
 
 # # dist là mảng 2 chiều : [distance, 0/1] : 0 là giống, 1 là khác.
