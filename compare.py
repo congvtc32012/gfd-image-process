@@ -1,5 +1,3 @@
-import os
-import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -19,10 +17,10 @@ def get_dist_2vector(vector1, vector2):  # Hàm này tính khoảng cách giữa
     return dist
 
 
-def get_similarity_ratio(vector1, vector2):
-    min_arr = [min(vector1[i], vector2[i]) for i in range(len(vector1))]
-    max_arr = [max(vector1[i], vector2[i]) for i in range(len(vector1))]
-    return sum(min_arr) / sum(max_arr)
+# def get_similarity_ratio(vector1, vector2):
+#     min_arr = [min(vector1[i], vector2[i]) for i in range(len(vector1))]
+#     max_arr = [max(vector1[i], vector2[i]) for i in range(len(vector1))]
+#     return sum(min_arr) / sum(max_arr)
 
 
 def compare_2image(img1, img2):  # Hàm so sánh 2 ảnh.
@@ -33,19 +31,21 @@ def compare_2image(img1, img2):  # Hàm so sánh 2 ảnh.
 
 # Hiện tại ảnh em đang giải nén ra và để trong thư mục images. Bên anh để ở thư mục nào thì sửa lại  IMAGES_PATH
 IMAGES_PATH = './images/=Signatures/=GFD/'
-
+THRESHOLD = 70
 # Tính độ giống nhau của 2 ảnh.
 
 # img1 = input("Image 1: ")  # Nhập vào tên ảnh 1
 # img2 = input("Image 2: ")  # Nhập vào tên ảnh 2
-img1 = "s04n001.gfd"
-img2 = "s08n001.gfd"
+img1 = "s02n001.gfd"
+img2 = "s01n009.gfd"
 vec1 = get_vector(IMAGES_PATH + img1)  # Lấy vector dựa vào ảnh
 vec2 = get_vector(IMAGES_PATH + img2)  # Lấy vector dựa vào ảnh.
 
 simi_percent = compare_2image(vec1, vec2)  # Tính độ giống nhau giữa 2 vector
+if simi_percent > THRESHOLD:
+    print("Two image is same class")
+else:
+    print("Two image isn't same class")
 print("The similarity of " + img1 + " and " + img2 + " is: " + str(round(simi_percent, 2)) + "%")
 
-ratio = get_similarity_ratio(vec1, vec2)    # Tính ratio theo công thức cuối.
-print("The similarity ratio of " + img1 + " and " + img2 + " is: " + str(round(100 * ratio, 2)) + "%")
 
