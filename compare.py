@@ -29,7 +29,7 @@ def compare_2image(img1, img2):  # Hàm so sánh 2 ảnh.
     return simi_percent
 
 
-# Hiện tại ảnh em đang giải nén ra và để trong thư mục images. Bên anh để ở thư mục nào thì sửa lại  IMAGES_PATH
+
 IMAGES_PATH = './images/=Signatures/=GFD/'
 THRESHOLD = 70
 # Tính độ giống nhau của 2 ảnh.
